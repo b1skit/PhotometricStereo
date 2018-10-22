@@ -1,0 +1,6 @@
+# Unrequired files
+*.zip
+*.xlsx
+*.asv
+*.pdf
+old/
