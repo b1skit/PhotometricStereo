@@ -123,7 +123,7 @@ tifFiles = {
 
 %% END OF IMAGE SELECTION BLOCKS
 
-%% Compute the light positions and directions:
+%% Compute the Z element of the light direction vector:
 lightDirections = zeros(1, 3, 3); % [x,y,z]x3
 for i = 1:3
     lightPositions(1,3,i) = sqrt(CAL_RADIUS^2 - (lightPositions(1,1,i) ...
@@ -136,7 +136,7 @@ for i = 1:3
         - [CENTER_X, CENTER_Y, 0]); 
 end
 
-% DEBUG: Print the light positions and directions
+% Print the light positions and directions:
 lightPositions
 lightDirections
 
