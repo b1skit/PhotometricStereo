@@ -39,9 +39,9 @@ QVR_DNSTY = 10;     % Spacing to sample when plotting quiver plots
 % image3 = image lit from the right
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% SYNTHETIC IMAGE SET PROCESSING
-% Uncomment this block to process the set of synthetic images
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %% SYNTHETIC IMAGE SET PROCESSING
+% % Uncomment this block to process the set of synthetic images
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % % Extracted measurements from calibration sphere:
 % lightPositions(:,:,1) = [226,160, 0]; 
 % lightPositions(:,:,2) = [320, 125, 0];
@@ -76,9 +76,9 @@ QVR_DNSTY = 10;     % Spacing to sample when plotting quiver plots
 % };
 
 
-%% REAL IMAGE SET PROCESSING
+% REAL IMAGE SET PROCESSING
 % Uncomment this block to process the set of real images
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Extracted measurements from calibration sphere:
 lightPositions(:,:,1) = [290,290, 0];
 lightPositions(:,:,2) = [318, 261, 0];
@@ -232,13 +232,14 @@ while index <= size(tifFiles,1)
                 theNormal = [-p, -q, 1];
                 theNormal = theNormal/norm(theNormal);
 
-                normalMap(y, x, 1) = theNormal(1,1);
-                normalMap(y, x, 2) = theNormal(1,2);
-                normalMap(y, x, 3) = theNormal(1,3);
+                % Shift normal map R & G to [0,1], & B to [0.5,1]
+                normalMap(y, x, 1) = (theNormal(1,1) + 1) / 2;
+                normalMap(y, x, 2) = (theNormal(1,2) + 1) / 2;
+                normalMap(y, x, 3) = (theNormal(1,3) / 2) + 0.5;
             end
         end
     end
-
+    
     %% Calculate the depth map:
     depthMap = zeros(size(combinedImg,1), size(combinedImg,2));
     % Integrate across the rows:
