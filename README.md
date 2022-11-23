@@ -6,3 +6,5 @@ It is written from scratch in MATLAB. An estimation of the light position for ea
 ### Instructions:
 
 Download the repository, and execute the **ShapeRecovery.m** file within MATLAB.
+
+© 2018 Adam Badke. All rights reserved.
